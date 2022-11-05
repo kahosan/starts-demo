@@ -24,6 +24,10 @@ try {
         fs.cpSync(path.join(pwd, currentDir, file), path.join(pwd, 'src', file));
         break;
       }
+      case 'vite-env.d.ts': {
+        fs.cpSync(path.join(pwd, currentDir, file), path.join(pwd, 'src', file));
+        break;
+      }
       default: {
         fs.cpSync(path.join(pwd, currentDir, file), path.join(pwd, file));
       }
