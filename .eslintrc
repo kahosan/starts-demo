@@ -1,0 +1,7 @@
+{
+  "extends": ["kaho/ts", "kaho/react"],
+  "rules": {
+    // use unocss attributify mode
+    "react/no-unknown-property": "off"
+  }
+}
