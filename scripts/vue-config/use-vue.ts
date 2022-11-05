@@ -11,27 +11,19 @@ try {
   fs.rmSync(path.join(pwd, 'src', 'main.tsx'));
   fs.rmSync(path.join(pwd, 'src', 'App.tsx'));
 
-  const dir = fs.readdirSync(currentDir);
+  const dir = fs.readdirSync(currentDir, { withFileTypes: true });
 
   for (const file of dir) {
-    if (/use-vue\.ts$/.test(file)) { continue; }
-    switch (file) {
-      case 'App.vue':{
-        fs.cpSync(path.join(pwd, currentDir, file), path.join(pwd, 'src', file));
-        break;
+    if (file.isDirectory()) {
+      const dir = fs.readdirSync(`${currentDir}/${file.name}`);
+
+      for (const file2 of dir) {
+        fs.cpSync(`${currentDir}/${file.name}/${file2}`, path.join(pwd, file.name, file2));
       }
-      case 'main.ts': {
-        fs.cpSync(path.join(pwd, currentDir, file), path.join(pwd, 'src', file));
-        break;
-      }
-      case 'vite-env.d.ts': {
-        fs.cpSync(path.join(pwd, currentDir, file), path.join(pwd, 'src', file));
-        break;
-      }
-      default: {
-        fs.cpSync(path.join(pwd, currentDir, file), path.join(pwd, file));
-      }
-    }
+      continue;
+    } else if (/use-vue\.ts$/.test(file.name)) { continue; }
+
+    fs.cpSync(`${currentDir}/${file.name}`, path.join(pwd, file.name));
   }
 
   exec('pnpm i').stdout?.on('data', (data) => {
