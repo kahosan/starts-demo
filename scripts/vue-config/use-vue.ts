@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import * as path from 'node:path';
 import * as fs from 'node:fs';
 import { exec } from 'node:child_process';
@@ -29,8 +30,9 @@ try {
     }
   }
 
-  exec('pnpm i');
-  console.log('\nuse vue success');
+  exec('pnpm i').stdout?.on('data', (data) => {
+    console.log(data);
+  });
 } catch (e) {
   console.error(e);
 }
