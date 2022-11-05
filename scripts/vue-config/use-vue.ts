@@ -3,7 +3,7 @@ import * as fs from 'node:fs';
 import { exec } from 'node:child_process';
 
 const pwd = process.cwd();
-const currentDir = './script/vue-config';
+const currentDir = './scripts/vue-config';
 
 try {
   // delete react files
