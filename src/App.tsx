@@ -20,7 +20,7 @@ export default function App() {
   return (
     <div className="max-w-600px mx-auto">
       <div className="flex items-center flex-col mt-40">
-        <h1 className="text-4xl">Hello, world!</h1>
+        <h1 className="text-4xl">Hello, World!</h1>
         <h2 className="mb-5">This is a simple demo labs</h2>
         <Counter />
       </div>
