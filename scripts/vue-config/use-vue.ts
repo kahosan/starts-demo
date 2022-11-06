@@ -10,6 +10,7 @@ try {
   // delete react files
   fs.rmSync(path.join(pwd, 'src', 'main.tsx'));
   fs.rmSync(path.join(pwd, 'src', 'App.tsx'));
+  fs.rmSync(path.join(pwd, 'test', 'index.test.tsx'));
 
   const dir = fs.readdirSync(currentDir, { withFileTypes: true });
 
